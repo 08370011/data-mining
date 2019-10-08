@@ -10,6 +10,5 @@ Week1
 AWS Educate使用教學
 GitHub     使用教學
 
-HW:
-RmarkdownExample
+
 
