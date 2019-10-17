@@ -7,10 +7,10 @@
 
 # Week1
 ## 9/27
-###School:
+**School:**
 1.AWS Educate使用教學<br />
 2.GitHub     使用教學<br />
-###At Home:
+**At Home:**
 1.R Studio <br />
 2.Markdown <br />
 
