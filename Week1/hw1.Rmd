@@ -1,0 +1,88 @@
+---
+title: "hw1"
+author: "Chang"
+date: "2019/10/15"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### **題目:**
+分析2000年到2016年間入選NBA全明星賽球員的得分.籃板.助攻以及命中率的平均來去探討要入選全明星所需要具備的身手<br />
+
+### **資料來源:**
+1.[NBA Drafts 2016-1989](https://data.world/gmoney/nba-drafts-2016-1989)<br />
+2.[NBA All Stars 2000-2016](https://data.world/gmoney/nba-all-stars-2000-2016)<br />
+
+
+#### **資料:NBA All Stars 2000-2016**
+將NBA All Stars 2000-2016的數據從網路上抓下來並把他整理成**Tidy Data**
+抓下來後到R Studio進行資料處理
+```{r NBA_All_Star_Games}
+library(readxl)
+NBA_All_Star_Games <- read_excel("C:/Users/Acer/Downloads/NBA All Star Games.xlsx")
+head(NBA_All_Star_Games)
+```
+
+從NBA All Stars 2000-2016的數據集裡用選取Player.Team留下,其餘的資料不要
+```{r nba1}
+library(dplyr)
+nba1 <- select(NBA_All_Star_Games, Player, Team)
+head(nba1)
+```
+
+從nba1的數據集裡用球員名字去統計他在2000-2016之間入選幾次全明星
+```{r group1}
+group1<-group_by(nba1,Player) %>%
+  summarise(frequency=n())
+head(group1)
+```
+
+把group1裡面的frequency做一個降續排序就可以知道誰2000-2016之間入選最多次全明星賽
+```{r arrange1}
+arrange1<-arrange(group1,desc(frequency))
+head(arrange1)
+```
+
+
+#### **資料:NBA Drafts 2016-1989**
+將NBA Drafts 2016-1989的數據從網路上抓下來並把他整理成**Tidy Data**
+抓下來後到R Studio進行資料處理
+```{r NBA_Drafts}
+NBA_Drafts <- read_excel("C:/Users/Acer/Downloads/NBA Drafts.xlsx")
+head(NBA_Drafts)
+```
+
+從NBA_Drafts的數據集裡用選取FG.TP.Points.TotalRebounds.Assists留下,其餘的資料不要
+```{r nbadata1}
+nbadata1 <- select(NBA_Drafts,Player,FG,TP,Points,TotalRebounds,Assists)
+head(nbadata1)
+```
+
+#### **將NBA Drafts 2016-1989與NBA All Stars 2000-2016資料合併**
+```{r total_nba1}
+total_nba1<-merge(group1,nbadata1,by="Player")
+head(total_nba1)
+```
+
+將入選不到三次的球員刪除以提高數據的精準度
+```{r filterData}
+filterData <- filter(total_nba1, frequency >= 3)
+head(filterData)
+```
+
+最後我們將剩下的球員他們的得分.籃板.助攻.命中率去求平均出來的結果就是球員如果要入選全明星所要具備的條件
+```{r }
+filterData %>% 
+  summarise(avg_FG = mean(FG), avg_TP = mean(TP),avg_Points = mean(Points),
+            avg_TotalRebounds = mean(TotalRebounds),avg_Assists = mean(Assists))
+```
+
+
+
+
+
