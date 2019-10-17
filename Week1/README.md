@@ -15,5 +15,5 @@
 2.Markdown <br />
 
 HW: <br />
-[hw1](https://08370011.github.io/data-mining/week1/hw1.html)
+[hw1](https://08370011.github.io/data-mining/Week1/hw1.html)
 
