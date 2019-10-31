@@ -17,4 +17,13 @@
 HW: <br />
 [tidy data](https://08370011.github.io/data-mining/Week1/hw1.html)
 
+# Week2
+## 10/18
+**School:**<br />
+1.decision tree 教學<br />
+**At Home:**<br />
+1.python  <br />
+2.decision tree <br />
 
+HW1: <br />
+[decision tree](https://08370011.github.io/data-mining/Week1/hw1.html)
