@@ -26,4 +26,6 @@ HW: <br />
 2.decision tree <br />
 
 HW1: <br />
-[decision tree](https://08370011.github.io/data-mining/Week1/hw1.html)
+[data mining](https://08370011.github.io/data-mining/Week2/HW1_datamining.html )<br />
+[decision tree](https://github.com/08370011/data-mining/blob/master/Week2/HW1%20data%20mining%20.html)<br />
+
